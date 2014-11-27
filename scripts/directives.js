@@ -80,26 +80,31 @@ angular.module('Cookies.directives', [])
          event_state.container_height = $container[0].offsetHeight;
          event_state.container_left = $container[0].offsetLeft;
          event_state.container_top = $container[0].offsetTop;
-         event_state.mouse_x = (e.clientX || e.pageX || e.originalEvent.touches[0].clientX) + 0;
-         event_state.mouse_y = (e.clientY || e.pageY || e.originalEvent.touches[0].clientY) + 0;
+         event_state.mouse_x = (e.clientX || e.pageX || e.touches[0].clientX) + 0;
+         event_state.mouse_y = (e.clientY || e.pageY || e.touches[0].clientY) + 0;
 
          // This is a fix for mobile safari
          // For some reason it does not allow a direct copy of the touches property
          if(typeof e.touches !== 'undefined'){
            event_state.touches = [];
-           $.each(e.originalEvent.touches, function(i, ob){
-             event_state.touches[i] = {};
-             event_state.touches[i].clientX = 0+ob.clientX;
-             event_state.touches[i].clientY = 0+ob.clientY;
-           });
+
+           var counter = 0;
+
+           for(touch in e.touches) {
+             event_state.touches[counter] = {};
+             event_state.touches[counter].clientX = 0+touch.clientX;
+             event_state.touches[counter].clientY = 0+touch.clientY;
+
+             counter = counter + 1;
+           }
          }
          event_state.evnt = e;
        }
 
        resizing = function(e) {
          var mouse={},width,height,left,top;
-         mouse.x = (e.clientX || e.pageX || e.originalEvent.touches[0].clientX) + 0;
-         mouse.y = (e.clientY || e.pageY || e.originalEvent.touches[0].clientY) + 0;
+         mouse.x = (e.clientX || e.pageX || e.touches[0].clientX) + 0;
+         mouse.y = (e.clientY || e.pageY || e.touches[0].clientY) + 0;
 
          // Position image differently depending on the corner dragged and constraints
          if(angular.element(event_state.evnt.target).hasClass('resize-handle-se') ){
@@ -143,15 +148,14 @@ angular.module('Cookies.directives', [])
          e.stopPropagation();
 
          touches = e.touches;
-         mouse.x = (e.clientX || e.pageX) + 0;
-         mouse.y = (e.clientY || e.pageY) + 0;
+         mouse.x =  (e.clientX || e.pageX || touches[0].clientX) + 0;
+         mouse.y = (e.clientY || e.pageY || touches[0].clientY) + 0;
 
          $container.css({
            'left': (mouse.x - (event_state.mouse_x - event_state.container_left)) + "px",
            'top': (mouse.y - (event_state.mouse_y - event_state.container_top)) + "px"
          });
 
-         // Watch for pinch zoom gesture while moving
          if(event_state.touches && event_state.touches.length > 1 && touches.length > 1){
            var width = event_state.container_width, height = event_state.container_height;
            var a = event_state.touches[0].clientX - event_state.touches[1].clientX;
@@ -170,9 +174,9 @@ angular.module('Cookies.directives', [])
 
            width = width * ratio;
            height = height * ratio;
-
            resize(width, height);
          }
+
        }
 
        init();
