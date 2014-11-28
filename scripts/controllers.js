@@ -4,13 +4,28 @@ angular.module('Cookies.controllers', [])
   $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
 })
 
-.controller('HomeCtrl', function($scope, $state, Camera) {
+.controller('HomeCtrl', function($scope, $state) {
+  $scope.gotoPhoto = function() {
+    $state.go('photo');
+  }
+})
+
+.controller('PhotoCtrl', function($scope, $rootScope, $timeout, Camera) {
+  if($rootScope.lastPhoto != undefined) {
+    $scope.photoTaken = true;
+    $scope.lastPhoto = $rootScope.lastPhoto;
+  } else {
+    $scope.photoTaken = false;
+    $scope.lastPhoto = "";
+  }
+
   $scope.getPhoto = function() {
     console.log('Getting camera');
     Camera.getPicture().then(function(imageURI) {
       console.log(imageURI);
+      $rootScope.lastPhoto = imageURI;
       $scope.lastPhoto = imageURI;
-      $state.go('photo', {url: encodeURIComponent(imageURI)});
+      $scope.photoTaken = true;
     }, function(err) {
       console.err(err);
     }, {
@@ -20,13 +35,4 @@ angular.module('Cookies.controllers', [])
       saveToPhotoAlbum: false
     });
   }
-})
-
-.controller('PhotoCtrl', function($scope, $stateParams, $state) {
-  // Get photo from camera
-  $scope.lastPhoto = decodeURIComponent($stateParams.url);
-
-
-
-
 })

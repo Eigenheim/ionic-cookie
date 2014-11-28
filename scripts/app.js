@@ -16,7 +16,7 @@ angular.module('Cookies', ['ionic', 'config', 'Cookies.services', 'Cookies.contr
   })
 
   .state('photo', {
-    url: '/photo/:url',
+    url: '/photo',
     templateUrl: 'templates/photo.html',
     controller: 'PhotoCtrl'
   });
