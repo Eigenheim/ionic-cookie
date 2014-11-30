@@ -1,19 +1,45 @@
 <ion-view title="Main">
   <ion-header-bar class="bar-stable">
     <h1 class="title">CookieCutter</h1>
-    <div class="buttons">
-      <button class="button button-outline button-positive" ng-click="gotoPhoto()">Start</button>
-    </div>
   </ion-header-bar>
-  <ion-content scroll="false">
+  <ion-content overflow-scroll="true">
     <div class="row">
-      <div class="price-tag col col-offset-60">
+      <div class="price-tag col" style="background: orange">
         <p>15 €</p>
       </div>
     </div>
     <div class="row">
-      <div class="padding" style="margin: 40px;">
-        <img class="placeholder" src="img/oven.png"/>
+      <div class="col" style="background: red;">
+      </div>
+      <div class="col col-75 padding" style="background: green;">
+          <img class="placeholder" src="img/oven.png"/>
+      </div>
+      <div class="col" style="background: teal;">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="col col-75">
+        <div class="col" style="background: yellow"></div>
+      </div>
+      <div class="col">
+      </div>
+    </div>
+    <div style="height: 100%;">
+      <div style="position: absolute; bottom: 0; width: 100%;">
+        <div class="row padding">
+          <div class="col button padding " style="background: red">
+          </div>
+          <div class="col button padding" style="background: blue">
+          </div>
+          <div class="col button padding" style="background: green">
+          </div>
+        </div>
+        <div class="row padding">
+          <div class="col" style="background: purple; height: 56px;">
+          </div>
+        </div>
       </div>
     </div>
   </ion-content>

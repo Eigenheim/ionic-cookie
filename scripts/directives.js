@@ -22,8 +22,10 @@ angular.module('Cookies.directives', [])
     restrict: 'E',
     template:  '<div class="resize-element"></div>',
     replace: true,
-    scope: true,
+    scope: false,
+    transclude: false,
     link: function($scope, $element, $attr) {
+
       var $container,
         event_state = {},
         constrain = false,
@@ -146,6 +148,7 @@ angular.module('Cookies.directives', [])
          // save state to scope
          $scope.cropWidth = width;
          $scope.cropHeight = height;
+         $scope.$apply();
        }
 
        moving = function(e) {
@@ -169,6 +172,7 @@ angular.module('Cookies.directives', [])
          //save state to scope
          $scope.cropLeft = left;
          $scope.cropTop = top;
+         $scope.$apply();
        }
 
        init();

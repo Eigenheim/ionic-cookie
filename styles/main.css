@@ -1,3 +1,7 @@
+/* Misc styles */
+
+
+
 /* HomeView styles */
 
 
@@ -148,6 +152,7 @@
 }
 
 /* PreviewView styles */
+
 .myClass {
   fill: url(#image);
   stroke: brown;
@@ -155,14 +160,14 @@
   box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
 }
 .price-tag {
-  padding-right: 20px;
-  padding-top: 20px;
+  padding: 20px;
 }
 
 .price-tag p {
   font-weight: bold;
   text-align: right;
   font-size: 20px;
+  margin-bottom: 0px;
 }
 
 .placeholder {

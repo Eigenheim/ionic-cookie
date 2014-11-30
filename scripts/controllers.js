@@ -16,9 +16,19 @@ angular.module('Cookies.controllers', [])
   if($rootScope.lastPhoto != undefined) {
     $scope.photoTaken = true;
     $scope.lastPhoto = $rootScope.lastPhoto;
+
+    $scope.cropLeft = 0;
+    $scope.cropTop = 0;
+    $scope.cropWidth = 80;
+    $scope.cropHeight = 120;
   } else {
     $scope.photoTaken = false;
     $scope.lastPhoto = "";
+
+    $scope.cropLeft = 0;
+    $scope.cropTop = 0;
+    $scope.cropWidth = 80;
+    $scope.cropHeight = 120;
   }
 
   $scope.getPhoto = function() {
@@ -39,6 +49,11 @@ angular.module('Cookies.controllers', [])
   }
 
   $scope.processPhoto = function() {
+    // redirect first
+    $state.go('preview');
+
+    console.log($scope);
+
     var img = new Image(),
       canvas = document.createElement("canvas"),
       left = $scope.cropLeft,
@@ -78,7 +93,6 @@ angular.module('Cookies.controllers', [])
     }
 
     img.src = $scope.lastPhoto;
-    $state.go('preview');
   }
 })
 
