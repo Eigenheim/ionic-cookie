@@ -19,6 +19,12 @@ angular.module('Cookies', ['ionic', 'config', 'Cookies.services', 'Cookies.contr
     url: '/photo',
     templateUrl: 'templates/photo.html',
     controller: 'PhotoCtrl'
+  })
+
+  .state('preview', {
+    url: '/preview',
+    templateUrl: 'templates/preview.html',
+    controller: 'PreviewCtrl'
   });
 
   // if none of the above states are matched, use this as the fallback

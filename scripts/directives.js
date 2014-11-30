@@ -142,10 +142,14 @@ angular.module('Cookies.directives', [])
        resize = function(width, height) {
          $element[0].style.width = width + "px";
          $element[0].style.height = height + "px";
+
+         // save state to scope
+         $scope.cropWidth = width;
+         $scope.cropHeight = height;
        }
 
-       moving = function(e){
-         var  mouse={}, touches;
+       moving = function(e) {
+         var  mouse={}, touches, left, top;
          e.preventDefault();
          e.stopPropagation();
 
@@ -153,32 +157,18 @@ angular.module('Cookies.directives', [])
          mouse.x =  (e.clientX || e.pageX || touches[0].clientX) + 0;
          mouse.y = (e.clientY || e.pageY || touches[0].clientY) + 0;
 
+         left = mouse.x - (event_state.mouse_x - event_state.container_left);
+         top = mouse.y - (event_state.mouse_y - event_state.container_top);
+
+
          $container.css({
-           'left': (mouse.x - (event_state.mouse_x - event_state.container_left)) + "px",
-           'top': (mouse.y - (event_state.mouse_y - event_state.container_top)) + "px"
+           'left': left + "px",
+           'top': top + "px"
          });
 
-         if(event_state.touches && event_state.touches.length > 1 && touches.length > 1){
-           var width = event_state.container_width, height = event_state.container_height;
-           var a = event_state.touches[0].clientX - event_state.touches[1].clientX;
-           a = a * a;
-           var b = event_state.touches[0].clientY - event_state.touches[1].clientY;
-           b = b * b;
-           var dist1 = Math.sqrt( a + b );
-
-           a = e.originalEvent.touches[0].clientX - touches[1].clientX;
-           a = a * a;
-           b = e.originalEvent.touches[0].clientY - touches[1].clientY;
-           b = b * b;
-           var dist2 = Math.sqrt( a + b );
-
-           var ratio = dist2 /dist1;
-
-           width = width * ratio;
-           height = height * ratio;
-           resize(width, height);
-         }
-
+         //save state to scope
+         $scope.cropLeft = left;
+         $scope.cropTop = top;
        }
 
        init();

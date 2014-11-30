@@ -1,12 +1,9 @@
 /* HomeView styles */
 
-.button-photo {
-
-}
 
 
 
-/*PhotoView styles */
+/* PhotoView styles */
 .bg-image {
   position: fixed;
   top: 0;
@@ -122,6 +119,10 @@
   line-height: 55px;
 }
 
+.photo-button.next p {
+  font-size: 56px;
+}
+
 .circle {
   margin-top: 30%;
   border-radius: 50%;
@@ -144,4 +145,28 @@
   vertical-align: middle;
   line-height: 110px;
   opacity: 0.6;
+}
+
+/* PreviewView styles */
+.myClass {
+  fill: url(#image);
+  stroke: brown;
+  stroke-width: 2px;
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
+}
+.price-tag {
+  padding-right: 20px;
+  padding-top: 20px;
+}
+
+.price-tag p {
+  font-weight: bold;
+  text-align: right;
+  font-size: 20px;
+}
+
+.placeholder {
+  position: relative;
+  width: 100%;
+  height: auto;
 }
