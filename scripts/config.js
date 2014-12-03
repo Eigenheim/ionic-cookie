@@ -1,10 +1,10 @@
 "use strict";
 
- angular.module("config", [])
+ angular.module("Cookies.config", [])
 
-.constant("ENV", {
+.constant("env", {
   "name": "development",
-  "apiEndpoint": "http://dev.yoursite.com:10000/"
+  "apiEndpoint": "http://ec2-54-93-131-155.eu-central-1.compute.amazonaws.com:9000/api"
 })
 
 ;

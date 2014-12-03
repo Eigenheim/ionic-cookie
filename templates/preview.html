@@ -1,45 +1,34 @@
-<ion-view title="Main">
+<ion-view title="Preview">
   <ion-header-bar class="bar-stable">
+    <div class="back-arrow" ng-click="">
+      <p class="ion-arrow-left-c"></p>
+    </div>
     <h1 class="title">CookieCutter</h1>
   </ion-header-bar>
-  <ion-content overflow-scroll="true">
-    <div class="row">
-      <div class="price-tag col" style="background: orange">
-        <p>15 €</p>
+  <ion-content scroll="false">
+
+    <div class="row" style="min-height:15%">
+      <div class="price-tag col">
+        <p class="accented-text">15 €</p>
       </div>
     </div>
-    <div class="row">
-      <div class="col" style="background: red;">
-      </div>
-      <div class="col col-75 padding" style="background: green;">
-          <img class="placeholder" src="img/oven.png"/>
-      </div>
-      <div class="col" style="background: teal;">
-      </div>
-    </div>
-    <div class="row">
+
+    <div class="row" style="min-height: 40%">
       <div class="col">
       </div>
-      <div class="col col-75">
-        <div class="col" style="background: yellow"></div>
+      <div class="col col-90">
+          <canvas co-render data="data"></canvas>
       </div>
       <div class="col">
       </div>
     </div>
-    <div style="height: 100%;">
-      <div style="position: absolute; bottom: 0; width: 100%;">
-        <div class="row padding">
-          <div class="col button padding " style="background: red">
-          </div>
-          <div class="col button padding" style="background: blue">
-          </div>
-          <div class="col button padding" style="background: green">
-          </div>
-        </div>
-        <div class="row padding">
-          <div class="col" style="background: purple; height: 56px;">
-          </div>
-        </div>
+
+    <div style="position: absolute; width: 100%; min-height: 60%; bottom: 0; background: white; opacity: 0.8;">
+    </div>
+
+    <div class="row no-padding" style="position: absolute; bottom: 0; padding-bottom: 56px;">
+      <div style="background: purple; height: 56px; width: 100%;">
+        <p style="text-align: center; line-height: 56px; vertical-allign: middle; color: white; font-size: 20px;">Bestellen</p>
       </div>
     </div>
   </ion-content>

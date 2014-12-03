@@ -4,7 +4,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('Cookies', ['ionic', 'config', 'Cookies.services', 'Cookies.controllers', 'Cookies.directives'])
+angular.module('Cookies', ['ionic', 'Cookies.config', 'Cookies.services', 'Cookies.controllers', 'Cookies.directives'])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider

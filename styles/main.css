@@ -1,6 +1,24 @@
 /* Misc styles */
+.back-arrow {
+  padding-left: 10px;
+}
 
+.back-arrow p {
+  font-size: 30px;
+  vertical-align: middle;
+  line-height: 39px;
+}
 
+.no-padding {
+  padding: 0  !important;
+}
+
+.accented-text {
+  font-weight: bold;
+  font-size: 23px;
+  margin-bottom: 0px;
+  font-family: 'Fredericka the Great', cursive;
+}
 
 /* HomeView styles */
 
@@ -164,10 +182,13 @@
 }
 
 .price-tag p {
-  font-weight: bold;
   text-align: right;
-  font-size: 20px;
-  margin-bottom: 0px;
+}
+
+.cookie-canvas {
+  position: relative;
+  width: 100%;
+  height: auto;
 }
 
 .placeholder {

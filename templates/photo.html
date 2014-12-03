@@ -6,14 +6,14 @@
       </div>
     </ion-pane>
   </div>
-  <div ng-show="photoTaken == false">
+  <div ng-show="photoTaken == true">
     <ion-pane>
       <div class="wrap"></div>
-      <background-image src="{{lastPhoto}}"></background-image>
-      <resize-frame></resize-frame>
+      <co-background-image src="{{lastPhoto}}"></co-background-image>
+      <co-resize-frame></co-resize-frame>
     </ion-pane>
   </div>
-  <div ng-show="photoTaken == false" id="footer">
+  <div ng-show="photoTaken == true" id="footer">
     <div class="row">
       <div class="col">
         <div class="photo-button new"><p ng-click="getPhoto()">Neu</p></div>

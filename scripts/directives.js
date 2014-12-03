@@ -1,7 +1,7 @@
 angular.module('Cookies.directives', [])
 
 
-.directive('backgroundImage', function() {
+.directive('coBackgroundImage', function() {
   return {
     restrict: 'E',
     template: '<div class="bg-image"></div>',
@@ -17,7 +17,7 @@ angular.module('Cookies.directives', [])
   }
 })
 
-.directive('resizeFrame', function() {
+.directive('coResizeFrame', function() {
   return {
     restrict: 'E',
     template:  '<div class="resize-element"></div>',
@@ -176,6 +176,62 @@ angular.module('Cookies.directives', [])
        }
 
        init();
+    }
+  }
+})
+
+.directive('coRender', function() {
+  return {
+    restrict: 'A',
+    scope: {
+      data: "="
+    },
+    link: function($scope, $element, $attr) {
+      var canvas = $element[0];
+      var width = $scope.data.width;
+      var height = $scope.data.height;
+      var offsetX = $scope.data.offsetX;
+      var offsetY = $scope.data.offsetY;
+
+      // let canvas fill parent
+      canvas.style.width ='100%';
+      canvas.style.height='100%';
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+
+      var context = canvas.getContext('2d');
+
+      // scale to fit canvas
+      var scaleFactorX = (canvas.width - 20)/width;
+      var scaleFactorY = (canvas.height - 20)/height;
+      context.scale(scaleFactorX, scaleFactorY);
+
+      // draw points
+      var points = $scope.data.points;
+      context.moveTo(points[points.length - 1].x - offsetX, points[points.length - 1].y - offsetY);
+      points.forEach(function(point) {
+        context.lineTo(point.x - offsetX, point.y - offsetY);
+      });
+
+      // shadow
+      context.shadowColor = '#BDBDBD';
+      context.shadowBlur = 10;
+      context.shadowOffsetX = 2;
+      context.shadowOffsetY = 5;
+
+      // stroke
+      //context.lineWidth = 2;
+      //context.strokeStyle = '#83320A';
+      //context.stroke();
+
+      var background = new Image();
+      background.onload = function() {
+        var pattern = context.createPattern(background,'repeat');
+        context.fillStyle = pattern;
+        context.fill();
+      };
+
+      background.src = 'img/cookie_texture.jpg';
     }
   }
 })
