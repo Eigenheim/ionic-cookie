@@ -197,7 +197,7 @@ angular.module('Cookies.directives', [])
       canvas.style.width ='100%';
       canvas.style.height='100%';
       canvas.width  = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
+      canvas.height = 0.45 * Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
       var context = canvas.getContext('2d');
 

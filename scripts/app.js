@@ -38,8 +38,10 @@ angular.module('Cookies', ['ionic', 'Cookies.config', 'Cookies.services', 'Cooki
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
+
     if(window.StatusBar) {
       // org.apache.cordova.statusbar required
+      StatusBar.show();
       StatusBar.styleDefault();
     }
   });
