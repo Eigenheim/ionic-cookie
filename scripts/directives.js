@@ -187,51 +187,55 @@ angular.module('Cookies.directives', [])
       data: "="
     },
     link: function($scope, $element, $attr) {
+      // Scale canvas on load
       var canvas = $element[0];
-      var width = $scope.data.width;
-      var height = $scope.data.height;
-      var offsetX = $scope.data.offsetX;
-      var offsetY = $scope.data.offsetY;
-
-      // let canvas fill parent
       canvas.style.width ='100%';
       canvas.style.height='100%';
       canvas.width  = canvas.offsetWidth;
-      canvas.height = 0.45 * Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+      canvas.height = 0.40 * Math.max(window.innerHeight || 0);
 
-      var context = canvas.getContext('2d');
+      $scope.$watch('data', function() {
+        if($scope.data !== undefined) {
+          var width = $scope.data.width;
+          var height = $scope.data.height;
+          var offsetX = $scope.data.offsetX;
+          var offsetY = $scope.data.offsetY;
 
-      // scale to fit canvas
-      var scaleFactorX = (canvas.width - 20)/width;
-      var scaleFactorY = (canvas.height - 20)/height;
-      context.scale(scaleFactorX, scaleFactorY);
+          var context = canvas.getContext('2d');
 
-      // draw points
-      var points = $scope.data.points;
-      context.moveTo(points[points.length - 1].x - offsetX, points[points.length - 1].y - offsetY);
-      points.forEach(function(point) {
-        context.lineTo(point.x - offsetX, point.y - offsetY);
+          // scale to fit canvas
+          var scaleFactorX = (canvas.width - 20)/width;
+          var scaleFactorY = (canvas.height - 20)/height;
+          context.scale(scaleFactorX, scaleFactorY);
+
+          // draw points
+          var points = $scope.data.points;
+          context.moveTo(points[points.length - 1].x - offsetX, points[points.length - 1].y - offsetY);
+          points.forEach(function(point) {
+            context.lineTo(point.x - offsetX, point.y - offsetY);
+          });
+
+          // shadow
+          context.shadowColor = '#BDBDBD';
+          context.shadowBlur = 10;
+          context.shadowOffsetX = 2;
+          context.shadowOffsetY = 5;
+
+          // stroke
+          //context.lineWidth = 2;
+          //context.strokeStyle = '#83320A';
+          //context.stroke();
+
+          var background = new Image();
+          background.onload = function() {
+            var pattern = context.createPattern(background,'repeat');
+            context.fillStyle = pattern;
+            context.fill();
+          };
+
+          background.src = 'img/cookie_texture.jpg';
+        }
       });
-
-      // shadow
-      context.shadowColor = '#BDBDBD';
-      context.shadowBlur = 10;
-      context.shadowOffsetX = 2;
-      context.shadowOffsetY = 5;
-
-      // stroke
-      //context.lineWidth = 2;
-      //context.strokeStyle = '#83320A';
-      //context.stroke();
-
-      var background = new Image();
-      background.onload = function() {
-        var pattern = context.createPattern(background,'repeat');
-        context.fillStyle = pattern;
-        context.fill();
-      };
-
-      background.src = 'img/cookie_texture.jpg';
     }
   }
 })

@@ -1,11 +1,33 @@
-<ion-view title="Preview">
-  <ion-header-bar class="bar-stable">
-    <div class="back-arrow" ng-click="">
+<ion-view title="Vorschau">
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-back-button class="button-clear back-arrow">
       <p class="ion-arrow-left-c"></p>
+    </ion-nav-back-button>
+    <ion-nav-buttons side="right">
+      <button class="button button-outline button-positive"  ng-hide="loading">Bestellen</button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="loading" ng-show="loading">
+    <div class="row" style="margin-top: 70px;">
+      <div class="col">
+      </div>
+      <div class="col col-67">
+        <img src="img/oven.png" style="width: 100%; height: auto;"></img>
+      </div>
+      <div class="col">
+      </div>
     </div>
-    <h1 class="title">CookieCutter</h1>
-  </ion-header-bar>
-  <ion-content scroll="false">
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="col col-90">
+        <p class="padding" style="text-align: center; color: #bdbdbd; font-size: 16px; font-weight: bold;">Einen Moment Geduld, wir backen gerade dein Plätzchen...</p>
+      </div>
+      <div class="col">
+      </div>
+    </div>
+  </ion-content>
+  <ion-content scroll="true" ng-hide="loading">
 
     <div class="row" style="min-height:15%">
       <div class="price-tag col">
@@ -13,7 +35,7 @@
       </div>
     </div>
 
-    <div class="row" style="min-height: 45%;">
+    <div class="row" style="min-height: 40%;">
       <div class="col">
       </div>
       <div class="col col-90">
@@ -22,15 +44,38 @@
       <div class="col">
       </div>
     </div>
+    <div class="grey-divider"></div>
 
-    <div class="order-menu" ng-show="menuOpen">
-
-    </div>
-
-    <div class="row no-padding" style="position: absolute; bottom: 0; padding-bottom: 56px;">
-      <div style="background: purple; height: 56px; width: 100%;" ng-click="triggerMenu()">
-        <p style="text-align: center; line-height: 56px; vertical-allign: middle; color: white; font-size: 20px;">Bestellen</p>
+    <div>
+      <p class="padding" style="font-size: 16px; margin-bottom: 0;">Größe</p>
+      <div class="row">
+        <div class="col">
+          <button class="button button-outline button-block button-positive" style="font-size: 13px;">6 x 6 cm</button>
+        </div>
+        <div class="col">
+          <button class="button button-outline button-block" style="font-size: 13px; min-width: 32px">8 x 8 cm</button>
+        </div>
+        <div class="col">
+          <button class="button button-outline button-block" style="font-size: 13px; min-width: 32px">10 x 10 cm</button>
+        </div>
       </div>
+    </div>
+    <div class="grey-divider"></div>
+
+    <div>
+      <p class="padding" style="font-size: 16px; margin-bottom: 0;">Beschreibung</p>
+      <p class="padding" style="color: #B2B2B2">
+        Plätzchenausstecher aus lebensmittelechtem (FDA) Kunststoff, welcher individuell nach deiner Zeichnung
+        angefertigt wurde.
+      </p>
+    </div>
+    <div class="grey-divider"></div>
+
+    <div>
+      <p class="padding" style="font-size: 16px; margin-bottom: 0;">Verfügbarkeit</p>
+      <p class="padding" style="color: #B2B2B2">
+        Dieses Produkt ist innerhalb von 3-5 Werktagen lieferbar.
+      </p>
     </div>
   </ion-content>
 </ion-view>

@@ -42,7 +42,7 @@ angular.module('Cookies', ['ionic', 'Cookies.config', 'Cookies.services', 'Cooki
     if(window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.show();
-      StatusBar.styleDefault();
+      StatusBar.style(2);
     }
   });
 });
