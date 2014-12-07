@@ -17,3 +17,25 @@ angular.module('Cookies.services', [])
     }
   }
 }])
+
+.factory('ErrorHandler', function($rootScope, $timeout) {
+  return {
+    show: function(msg, timeout) {
+      console.log(msg);
+
+      $rootScope.error = true;
+      $rootScope.errorMsg = msg;
+
+      if(timeout) {
+        $timeout(function() {
+          $rootScope.error = false;
+          $rootScope.errorMsg = "";
+        }, timeout);
+      }
+    },
+    hide: function() {
+      $rootScope.error = false;
+      $rootScope.errorMsg = "";
+    }
+  }
+})

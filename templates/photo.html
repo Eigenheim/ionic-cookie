@@ -1,19 +1,19 @@
 <ion-view title="Photo">
-  <div ng-hide="photoTaken == true">
+  <div ng-hide="photoTaken">
     <ion-pane ng-click="getPhoto()">
       <div class="circle">
         <p class="ion-images"></p>
       </div>
     </ion-pane>
   </div>
-  <div ng-show="photoTaken == false">
+  <div ng-show="photoTaken">
     <ion-pane>
       <div class="wrap"></div>
       <co-background-image src="{{lastPhoto}}"></co-background-image>
       <co-resize-frame></co-resize-frame>
     </ion-pane>
   </div>
-  <div ng-show="photoTaken == false" id="footer">
+  <div ng-show="photoTaken" id="footer">
     <div class="row">
       <div class="col">
         <div class="photo-button new"><p ng-click="getPhoto()">Neu</p></div>

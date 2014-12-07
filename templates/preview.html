@@ -8,12 +8,13 @@
     </ion-nav-buttons>
   </ion-nav-bar>
   <ion-content class="loading" ng-show="loading">
+    <div class="error" ng-show="error"><p class="padding" ng-bind="errorMsg"></p></div>
     <div class="row" style="margin-top: 70px;">
       <div class="col">
       </div>
       <div class="col col-67">
         <img src="img/oven.png" style="width: 100%; height: auto;"></img>
-      </div>
+      </div>  
       <div class="col">
       </div>
     </div>
@@ -27,6 +28,7 @@
       </div>
     </div>
   </ion-content>
+
   <ion-content scroll="true" ng-hide="loading">
 
     <div class="row" style="min-height:15%">

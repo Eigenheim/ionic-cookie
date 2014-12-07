@@ -192,7 +192,7 @@ angular.module('Cookies.directives', [])
       canvas.style.width ='100%';
       canvas.style.height='100%';
       canvas.width  = canvas.offsetWidth;
-      canvas.height = 0.40 * Math.max(window.innerHeight || 0);
+      canvas.height = 0.45 * Math.max(window.innerHeight || 0);
 
       $scope.$watch('data', function() {
         if($scope.data !== undefined) {
